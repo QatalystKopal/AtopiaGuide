@@ -236,8 +236,13 @@
         </p>
       </div>
 
-      <button class="w-full min-h-[46px] py-2.5 px-4 rounded-xl bg-espresso text-parchment hover:bg-espresso/90 font-serif italic text-[14.5px] shadow-sm active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer" type="submit">
-        <span>Register now and join the conversation!</span>
+      <!-- Left empty by people; bots that fill it in are ignored -->
+      <input type="text" name="website" id="rsvpWebsite" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+
+      <p class="hidden text-[12px] text-terracotta leading-snug" id="submitError" role="alert"></p>
+
+      <button class="w-full min-h-[46px] py-2.5 px-4 rounded-xl bg-espresso text-parchment hover:bg-espresso/90 disabled:opacity-60 disabled:cursor-wait font-serif italic text-[14.5px] shadow-sm active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer" type="submit" id="submitBtn">
+        <span id="submitLabel">Register now and join the conversation!</span>
         <span class="material-symbols-outlined text-[17px] not-italic">arrow_forward</span>
       </button>
     </form>
@@ -249,12 +254,12 @@
       <div class="space-y-1">
         <h3 class="font-serif text-[20px] font-medium text-espresso">You are registered</h3>
         <p class="text-[12px] text-espresso-muted max-w-xs mx-auto leading-relaxed">
-          Your seat is saved for <strong>10 Oct (3:00 PM – 4:00 PM)</strong>. The private Zoom invitation has been dispatched to your inbox.
+          Your seat is saved for <strong>Saturday 10 Oct (3:00 PM – 4:00 PM)</strong>. We’ll email your Zoom link before the session.
         </p>
       </div>
       <div class="p-2.5 bg-parchment-warm rounded-lg text-sage text-[11.5px] font-serif italic flex items-center justify-center gap-1.5 border border-espresso/10">
         <span class="material-symbols-outlined text-[15px] not-italic">verified</span>
-        <span>Added to In Our Skin Youth Roster</span>
+        <span>Saved to the In Our Skin guest list</span>
       </div>
       <div class="flex flex-col gap-2 pt-2">
         <button class="text-terracotta text-[12px] underline cursor-pointer font-serif italic" id="registerAnother" type="button">
@@ -269,19 +274,39 @@
 </div>
 
 <script>
+  // Google Apps Script web app URL (see apps-script/Code.gs). Registrations
+  // are appended to the "Registrations" tab of the linked Google Sheet.
+  var SHEET_ENDPOINT = '';
+
   (function () {
     var modal = document.getElementById('registrationModal');
     var form = document.getElementById('rsvpForm');
     var success = document.getElementById('successState');
     var email = document.getElementById('modalUserEmail');
     var emailError = document.getElementById('emailError');
+    var submitError = document.getElementById('submitError');
+    var submitBtn = document.getElementById('submitBtn');
+    var submitLabel = document.getElementById('submitLabel');
+    var submitText = submitLabel.textContent;
     var lastTrigger = null;
+
+    function setSending(sending) {
+      submitBtn.disabled = sending;
+      submitLabel.textContent = sending ? 'Saving your spot…' : submitText;
+    }
+
+    function showSubmitError(message) {
+      submitError.textContent = message;
+      submitError.classList.remove('hidden');
+    }
 
     function showForm() {
       success.classList.add('hidden');
       form.classList.remove('hidden');
       form.reset();
       emailError.classList.add('hidden');
+      submitError.classList.add('hidden');
+      setSending(false);
     }
 
     function openModal(trigger) {
@@ -319,9 +344,36 @@
         return;
       }
       emailError.classList.add('hidden');
-      // TODO: send the registration to a backend (form service, Google Sheet, etc.).
-      form.classList.add('hidden');
-      success.classList.remove('hidden');
+      submitError.classList.add('hidden');
+      if (submitBtn.disabled) return;
+
+      if (!SHEET_ENDPOINT) {
+        showSubmitError('Registration isn’t open yet. Please try again soon.');
+        return;
+      }
+
+      var role = form.querySelector('input[name="modal_is_caregiver"]:checked');
+      var body = new URLSearchParams({
+        email: email.value.trim(),
+        role: role ? role.value : 'no',
+        page: location.href,
+        website: document.getElementById('rsvpWebsite').value
+      });
+
+      setSending(true);
+      fetch(SHEET_ENDPOINT, { method: 'POST', body: body })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (!data || !data.ok) throw new Error((data && data.error) || 'save_failed');
+          form.classList.add('hidden');
+          success.classList.remove('hidden');
+        })
+        .catch(function (err) {
+          setSending(false);
+          showSubmitError(err.message === 'invalid_email'
+            ? 'That email address doesn’t look right. Please check it and try again.'
+            : 'We couldn’t save your registration. Check your connection and try again.');
+        });
     });
 
     document.getElementById('registerAnother').addEventListener('click', function () {
