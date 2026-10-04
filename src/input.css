@@ -7,7 +7,7 @@
     margin: 0;
     padding: 0;
     -webkit-tap-highlight-color: transparent;
-    background-color: #FBF8F2;
+    background-color: #FAF6F0;
     color: #241C18;
   }
   body { overscroll-behavior-y: none; }
@@ -16,29 +16,8 @@
 
 ::-webkit-scrollbar { display: none; }
 
-/* Subtle paper texture wash */
-.paper-texture {
-  background-image: radial-gradient(rgba(36, 28, 24, 0.04) 1px, transparent 0);
-  background-size: 16px 16px;
-}
-
-/* Inner pages use the desktop dot grid at every width */
-.subpage-texture {
+/* Warm dot-grid ground used on every page */
+.dot-texture {
   background-image: radial-gradient(rgba(180, 160, 140, 0.18) 1px, transparent 1px);
   background-size: 24px 24px;
-}
-
-/* Desktop: warmer ground with a wider dot grid */
-@media (min-width: 768px) {
-  body.paper-texture {
-    background-color: #FAF6F0;
-    background-image: radial-gradient(rgba(180, 160, 140, 0.18) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-}
-
-.washi-tape {
-  background: rgba(234, 226, 211, 0.7);
-  backdrop-filter: blur(2px);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
