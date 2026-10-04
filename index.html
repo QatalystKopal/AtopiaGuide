@@ -14,7 +14,8 @@
 </head>
 <body class="bg-parchment font-sans text-espresso relative min-h-screen antialiased selection:bg-terracotta-soft selection:text-terracotta paper-texture">
 
-<main class="w-full max-w-[420px] mx-auto px-5 pt-6 pb-16 space-y-9">
+<!-- Phone layout (under 768px) -->
+<main class="md:hidden w-full max-w-[420px] mx-auto px-5 pt-6 pb-16 space-y-9">
 
   <!-- Hero -->
   <section class="space-y-5">
@@ -39,9 +40,7 @@
             <span>Date</span>
           </div>
           <span class="font-serif text-[19px] font-medium text-espresso block leading-tight">10 Oct</span>
-          <a class="inline-flex items-center gap-0.5 text-[11px] text-sage font-medium hover:underline pt-0.5" href="#registerBanner">
-            Add to calendar <span class="material-symbols-outlined text-[11px]">north_east</span>
-          </a>
+          <span class="text-[11px] text-espresso-muted block font-sans">Saturday Afternoon</span>
         </div>
         <div class="space-y-0.5 border-l border-ink-line pl-3">
           <div class="flex items-center gap-1.5 text-[10px] uppercase font-mono tracking-wider text-espresso-muted">
@@ -164,6 +163,185 @@
   </section>
 </main>
 
+<!-- Desktop / tablet layout (768px and up) -->
+<div class="hidden md:block py-8 md:py-14 px-4 sm:px-8 lg:px-16 font-sans text-stone-800 selection:bg-orange-100 selection:text-terracotta-700">
+<main class="max-w-7xl mx-auto space-y-16 lg:space-y-20">
+  <nav class="w-full flex items-center justify-between py-4 border-b border-stone-300/70 text-ink" aria-label="Primary Navigation">
+    <div class="hidden md:flex items-center gap-6 font-medium text-stone-600 text-base">
+      <a href="./" aria-current="page" class="text-stone-900 transition-colors font-serif italic text-base">Home</a>
+      <a href="community.html" class="hover:text-stone-900 transition-colors">Community</a>
+      <a href="resources.html" class="hover:text-stone-900 transition-colors">Resources</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="#register" data-open-modal class="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-stone-400/80 bg-cream-100 hover:bg-stone-900 hover:text-stone-100 text-stone-800 text-xs font-medium tracking-wider uppercase transition-colors shadow-sm">Register</a>
+    </div>
+  </nav>
+
+  <!-- Hero: two columns on large screens -->
+  <header class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center pt-2">
+    <div class="lg:col-span-6 space-y-7">
+      <h1 class="font-serif text-5xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.12] text-ink">
+        In Our Skin:<br>
+        <span class="italic font-normal text-terracotta-600 block mt-1.5">Growing Up with Eczema.</span>
+      </h1>
+      <div class="border-l-[2px] border-emerald-900/60 pl-4 py-1">
+        <p class="font-serif italic text-xl sm:text-[1.28rem] leading-relaxed text-stone-700">
+          “A welcoming conversation for adolescents with eczema and their caregivers to share, connect and be heard.”
+        </p>
+      </div>
+      <div class="space-y-4 pt-1">
+        <div class="rounded-2xl border border-dashed border-stone-400/80 p-3 sm:p-3.5 text-center">
+          <a class="block w-full py-4 px-6 bg-[#211E1D] hover:bg-stone-900 transition-colors duration-200 text-stone-100 rounded-xl text-center shadow-md group" href="#register" data-open-modal>
+            <span class="font-serif italic text-lg sm:text-lg tracking-normal">
+              Register now and join the conversation!
+              <span class="inline-block transition-transform duration-200 group-hover:translate-x-1.5 ml-1 font-sans text-lg" aria-hidden="true">→</span>
+            </span>
+          </a>
+        </div>
+        <div class="flex flex-wrap items-center gap-3 pt-1 text-xs text-stone-600">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EAE2D5]/70 border border-stone-300/80 font-medium">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-700"></span> 100% Free Virtual Event
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EAE2D5]/70 border border-stone-300/80 font-medium">
+            <span class="w-1.5 h-1.5 rounded-full bg-terracotta-600"></span> Interactive &amp; Judgment-Free
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-6 space-y-6">
+      <figure class="relative group">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-[#eae1d2]/85 backdrop-blur-[1px] shadow-sm rounded-sm z-10 rotate-[-1deg]"></div>
+        <div class="p-2.5 bg-[#F4EFE7] rounded-3xl border border-stone-300/70 shadow-sm overflow-hidden">
+          <div class="aspect-[16/10] overflow-hidden rounded-[20px] bg-stone-200">
+            <img alt="A group of young friends laughing together on a hilltop at sunset" class="w-full h-full object-cover object-center filter contrast-[1.02] brightness-[1.01]" src="images/event-photo.jpg" width="1200" height="715" decoding="async">
+          </div>
+        </div>
+      </figure>
+
+      <section class="bg-[#F4EFE7]/85 border border-stone-300/60 rounded-2xl p-5 sm:p-6 shadow-sm">
+        <div class="grid grid-cols-2 gap-y-4 gap-x-6">
+          <div class="space-y-1">
+            <span class="flex items-center text-[10px] tracking-widest uppercase font-semibold text-stone-500">
+              <svg class="w-3.5 h-3.5 mr-1.5 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              Date
+            </span>
+            <div class="font-serif text-ink font-medium text-2xl">10 Oct</div>
+            <p class="text-xs text-stone-600">Saturday Afternoon</p>
+          </div>
+          <div class="space-y-1">
+            <span class="flex items-center text-[10px] tracking-widest uppercase font-semibold text-stone-500">
+              <svg class="w-3.5 h-3.5 mr-1.5 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              Time
+            </span>
+            <div class="font-serif text-ink font-medium text-2xl">3:00 – 4:00 PM</div>
+            <p class="text-xs text-stone-600">60 Mins • Interactive</p>
+          </div>
+          <div class="space-y-1 pt-2 border-t border-stone-200">
+            <span class="flex items-center text-[10px] tracking-widest uppercase font-semibold text-stone-500">
+              <svg class="w-3.5 h-3.5 mr-1.5 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              Venue
+            </span>
+            <div class="font-serif text-ink font-medium text-xl">Online Zoom</div>
+            <p class="text-xs text-stone-600">Direct link post-RSVP</p>
+          </div>
+          <div class="space-y-1 pt-2 border-t border-stone-200">
+            <span class="flex items-center text-[10px] tracking-widest uppercase font-semibold text-stone-500">
+              <svg class="w-3.5 h-3.5 mr-1.5 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              Audience
+            </span>
+            <div class="font-serif text-ink font-medium text-xl">Youths &amp; Carers</div>
+            <p class="text-xs text-stone-600">Youths and parents</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <!-- Session pillars: three columns -->
+  <section class="space-y-8 scroll-mt-8" id="syllabus">
+    <header class="space-y-2 max-w-2xl">
+      <p class="text-[10.5px] font-bold tracking-[0.18em] uppercase text-stone-600">The Syllabus &amp; Pillars</p>
+      <h2 class="font-serif text-4xl sm:text-4xl font-medium tracking-tight text-ink leading-tight">What to Expect During the Hour</h2>
+      <p class="text-stone-600 text-base leading-relaxed font-normal">
+        Crafted specifically for adolescents and parents seeking calm, practical clarity without medical lectures.
+      </p>
+    </header>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
+      <article class="bg-[#F5EFE8]/80 border border-stone-300/60 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-sm transition hover:border-stone-400 hover:shadow-md">
+        <div class="space-y-3.5">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-[11px] font-semibold tracking-widest text-stone-600 uppercase font-mono">Chapter 01</span>
+            <span class="font-serif italic text-stone-500 text-sm">Youth Panel</span>
+          </div>
+          <h3 class="font-serif text-2xl font-medium text-ink">Shared Experiences</h3>
+          <p class="text-stone-600 text-base sm:text-[14.5px] leading-relaxed">
+            Open, judgment-free discussions about navigating high school, sports uniforms, social gatherings, flare-ups, and building genuine self-confidence with eczema.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 pt-6">
+          <span class="px-2.5 py-1 bg-white/70 border border-stone-200 text-stone-700 text-[10px] font-medium tracking-wider uppercase rounded-md">Peer Voices</span>
+          <span class="px-2.5 py-1 bg-[#E3ECE7]/80 text-[#335640] border border-[#d2ded7] text-[10px] font-medium tracking-wider uppercase rounded-md">Empathy First</span>
+        </div>
+      </article>
+      <article class="bg-[#F5EFE8]/80 border border-stone-300/60 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-sm transition hover:border-stone-400 hover:shadow-md">
+        <div class="space-y-3.5">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-[11px] font-semibold tracking-widest text-stone-600 uppercase font-mono">Chapter 02</span>
+            <span class="font-serif italic text-stone-500 text-sm">Family Bridge</span>
+          </div>
+          <h3 class="font-serif text-2xl font-medium text-ink">Caregiver Bridge</h3>
+          <p class="text-stone-600 text-base sm:text-[14.5px] leading-relaxed">
+            Gentle guidance on how caregivers and youth can talk openly about itch spirals, fatigue, and daily treatments without nagging, tension, or caregiver burnout.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 pt-6">
+          <span class="px-2.5 py-1 bg-white/70 border border-stone-200 text-stone-700 text-[10px] font-medium tracking-wider uppercase rounded-md">Dialogue Skills</span>
+          <span class="px-2.5 py-1 bg-[#F9ECE7]/80 text-terracotta-700 border border-[#f1ded6] text-[10px] font-medium tracking-wider uppercase rounded-md">Home Harmony</span>
+        </div>
+      </article>
+      <article class="bg-[#F5EFE8]/80 border border-stone-300/60 rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-sm transition hover:border-stone-400 hover:shadow-md">
+        <div class="space-y-3.5">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-[11px] font-semibold tracking-widest text-stone-600 uppercase font-mono">Chapter 03</span>
+            <span class="font-serif italic text-stone-500 text-sm">Safe Space</span>
+          </div>
+          <h3 class="font-serif text-2xl font-medium text-ink">Live Q&amp;A</h3>
+          <p class="text-stone-600 text-base sm:text-[14.5px] leading-relaxed">
+            Everyday itch relief techniques, soothing bedtime rituals, and an anonymous live poll tackling questions youth are often hesitant to ask in clinic rooms.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 pt-6">
+          <span class="px-2.5 py-1 bg-white/70 border border-stone-200 text-stone-700 text-[10px] font-medium tracking-wider uppercase rounded-md">Actionable Guide</span>
+          <span class="px-2.5 py-1 bg-[#ECEAE3]/80 text-stone-700 border border-[#dedcd2] text-[10px] font-medium tracking-wider uppercase rounded-md">Anonymous Poll</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Closing call to action -->
+  <footer class="pt-6 pb-12 text-center space-y-6 scroll-mt-8" id="register">
+    <div class="w-full h-px bg-stone-300/80 mb-10"></div>
+    <div class="flex justify-center">
+      <div class="w-12 h-12 rounded-full bg-[#E5EEE8] flex items-center justify-center text-moss-700 border border-[#D5E1D8] shadow-inner">
+        <svg class="w-6 h-6 stroke-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
+      </div>
+    </div>
+    <div class="space-y-2">
+      <p class="text-[11px] font-semibold tracking-[0.2em] uppercase text-stone-500">Join Us on Zoom</p>
+      <h2 class="font-serif text-4xl sm:text-4xl font-medium text-ink max-w-xl mx-auto leading-snug">Register now and join the conversation!</h2>
+      <p class="font-serif italic text-stone-600 text-lg sm:text-lg pt-0.5">10 Oct • 3:00 PM – 4:00 PM • Free Virtual Community Session</p>
+    </div>
+    <div class="pt-3">
+      <a class="inline-flex items-center justify-center w-full sm:w-auto px-9 py-4 bg-moss-700 hover:bg-moss-800 text-stone-100 rounded-xl transition duration-200 shadow-md font-serif italic text-base sm:text-lg group" href="#register" data-open-modal>
+        <span>Reserve My Free Spot Now</span>
+        <span class="ml-2 font-sans font-normal transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </footer>
+</main>
+</div>
+
 <!-- RSVP modal -->
 <div class="fixed inset-0 z-50 flex items-center justify-center bg-espresso/50 backdrop-blur-sm p-4 hidden" id="registrationModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="relative w-full max-w-[400px] rounded-2xl p-6 bg-parchment border border-espresso/20 shadow-xl space-y-4 max-h-[92vh] overflow-y-auto">
@@ -271,7 +449,7 @@
     }
 
     document.querySelectorAll('[data-open-modal]').forEach(function (btn) {
-      btn.addEventListener('click', function () { openModal(btn); });
+      btn.addEventListener('click', function (e) { e.preventDefault(); openModal(btn); });
     });
     document.querySelectorAll('[data-close-modal]').forEach(function (btn) {
       btn.addEventListener('click', closeModal);
@@ -300,6 +478,9 @@
       showForm();
       email.focus();
     });
+
+    // Register links on other pages point to ./#register
+    if (location.hash === '#register') openModal(null);
   })();
 </script>
 </body>
