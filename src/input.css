@@ -22,6 +22,15 @@
   background-size: 16px 16px;
 }
 
+/* Desktop: warmer ground with a wider dot grid */
+@media (min-width: 768px) {
+  body.paper-texture {
+    background-color: #FAF6F0;
+    background-image: radial-gradient(rgba(180, 160, 140, 0.18) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
+
 .washi-tape {
   background: rgba(234, 226, 211, 0.7);
   backdrop-filter: blur(2px);
