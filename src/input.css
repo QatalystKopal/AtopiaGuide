@@ -22,6 +22,12 @@
   background-size: 16px 16px;
 }
 
+/* Inner pages use the desktop dot grid at every width */
+.subpage-texture {
+  background-image: radial-gradient(rgba(180, 160, 140, 0.18) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
 /* Desktop: warmer ground with a wider dot grid */
 @media (min-width: 768px) {
   body.paper-texture {
