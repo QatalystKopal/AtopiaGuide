@@ -11,7 +11,6 @@
     color: #241C18;
   }
   body { overscroll-behavior-y: none; }
-  body.modal-open { overflow: hidden; }
 }
 
 ::-webkit-scrollbar { display: none; }
