@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #FBF8F2;
+    color: #241C18;
+  }
+  body { overscroll-behavior-y: none; }
+  body.modal-open { overflow: hidden; }
+}
+
+::-webkit-scrollbar { display: none; }
+
+/* Subtle paper texture wash */
+.paper-texture {
+  background-image: radial-gradient(rgba(36, 28, 24, 0.04) 1px, transparent 0);
+  background-size: 16px 16px;
+}
+
+.washi-tape {
+  background: rgba(234, 226, 211, 0.7);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
