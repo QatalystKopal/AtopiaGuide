@@ -237,7 +237,7 @@
       </div>
 
       <!-- Left empty by people; bots that fill it in are ignored -->
-      <input type="text" name="website" id="rsvpWebsite" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+      <input type="checkbox" name="botcheck" id="rsvpBotcheck" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
 
       <p class="hidden text-[12px] text-terracotta leading-snug" id="submitError" role="alert"></p>
 
@@ -274,9 +274,9 @@
 </div>
 
 <script>
-  // Google Apps Script web app URL (see apps-script/Code.gs). Registrations
-  // are appended to the "Registrations" tab of the linked Google Sheet.
-  var SHEET_ENDPOINT = '';
+  // Web3Forms access key (from web3forms.com). Each registration is emailed
+  // to the address the key was created for. The key is safe to publish.
+  var WEB3FORMS_ACCESS_KEY = '';
 
   (function () {
     var modal = document.getElementById('registrationModal');
@@ -347,32 +347,38 @@
       submitError.classList.add('hidden');
       if (submitBtn.disabled) return;
 
-      if (!SHEET_ENDPOINT) {
+      if (!WEB3FORMS_ACCESS_KEY) {
         showSubmitError('Registration isn’t open yet. Please try again soon.');
         return;
       }
 
       var role = form.querySelector('input[name="modal_is_caregiver"]:checked');
-      var body = new URLSearchParams({
+      var attendingAs = role && role.value === 'yes' ? 'Caregiver' : 'Youth';
+      var payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: 'New registration: In Our Skin (' + attendingAs + ')',
+        from_name: 'In Our Skin website',
         email: email.value.trim(),
-        role: role ? role.value : 'no',
-        page: location.href,
-        website: document.getElementById('rsvpWebsite').value
-      });
+        attending_as: attendingAs,
+        event: 'In Our Skin: Growing Up with Eczema, Sat 10 Oct, 3:00–4:00 PM (Zoom)',
+        botcheck: document.getElementById('rsvpBotcheck').checked
+      };
 
       setSending(true);
-      fetch(SHEET_ENDPOINT, { method: 'POST', body: body })
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
         .then(function (res) { return res.json(); })
         .then(function (data) {
-          if (!data || !data.ok) throw new Error((data && data.error) || 'save_failed');
+          if (!data || !data.success) throw new Error('save_failed');
           form.classList.add('hidden');
           success.classList.remove('hidden');
         })
-        .catch(function (err) {
+        .catch(function () {
           setSending(false);
-          showSubmitError(err.message === 'invalid_email'
-            ? 'That email address doesn’t look right. Please check it and try again.'
-            : 'We couldn’t save your registration. Check your connection and try again.');
+          showSubmitError('We couldn’t save your registration. Check your connection and try again.');
         });
     });
 
