@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Nanoq Ventures</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+  @layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}
+  ::-webkit-scrollbar{display:none;}
+  html{scroll-behavior:smooth;}
+  [data-section]{scroll-margin-top:4rem;}
+
+  /* Scroll reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.is-visible{opacity:1;transform:none;}
+
+  /* Chat */
+  .msg-in{animation:msgIn .28s ease-out both;}
+  @keyframes msgIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+  .typing-dot{width:6px;height:6px;border-radius:9999px;background:#8CAEB5;display:inline-block;animation:typing 1.1s infinite ease-in-out;}
+  .typing-dot:nth-child(2){animation-delay:.15s;}
+  .typing-dot:nth-child(3){animation-delay:.3s;}
+  @keyframes typing{0%,80%,100%{opacity:.25;transform:translateY(0);}40%{opacity:1;transform:translateY(-3px);}}
+
+  /* Gate slider */
+  #gate-range-slider{background:linear-gradient(to right,#00696c 0%,#00696c var(--fill,50%),#e3e2df var(--fill,50%),#e3e2df 100%);}
+  #gate-range-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:16px;height:16px;border-radius:9999px;background:#91eff2;border:2px solid #00696c;box-shadow:0 0 0 4px rgba(0,105,108,.25);}
+  #gate-range-slider::-moz-range-thumb{width:14px;height:14px;border-radius:9999px;background:#91eff2;border:2px solid #00696c;}
+  #gate-step-detail.swap{animation:msgIn .3s ease-out both;}
+
+  /* Hero pointer glow */
+  #hero-glow{background:radial-gradient(520px circle at var(--mx,50%) var(--my,30%),rgba(140,174,181,.14),transparent 60%);transition:background .1s;}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .msg-in,#gate-step-detail.swap{animation:none;}
+  }
+</style>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed": "#94f2f5", "inverse-on-surface": "#f2f1ed", "primary": "#000103", "error-container": "#ffdad6", "surface-container": "#efeeea", "on-error": "#ffffff", "text-muted-dark": "#9BB0BE", "tertiary": "#010000", "on-surface-variant": "#44474c", "surface-dim": "#dbdad6", "tertiary-fixed-dim": "#e2c28e", "on-primary-container": "#788597", "background": "#faf9f5", "surface-bright": "#faf9f5", "on-primary-fixed-variant": "#3b4857", "surface": "#faf9f5", "inverse-surface": "#30312e", "outline-variant": "#c4c6cc", "on-primary-fixed": "#0f1c2a", "surface-container-high": "#e9e8e4", "outline": "#74777c", "on-tertiary-container": "#9c8051", "on-secondary-container": "#006e71", "inverse-primary": "#bac8db", "arctic-blue": "#8CAEB5", "surface-container-low": "#f5f4f0", "secondary-fixed-dim": "#77d5d8", "on-secondary-fixed": "#002021", "on-secondary": "#ffffff", "on-surface": "#1b1c1a", "on-secondary-fixed-variant": "#004f51", "on-background": "#1b1c1a", "surface-container-highest": "#e3e2df", "primary-fixed-dim": "#bac8db", "on-tertiary-fixed-variant": "#59431a", "line-dark": "rgba(16, 29, 43, 0.12)", "tertiary-container": "#281900", "on-primary": "#ffffff", "text-muted-light": "#647482", "primary-container": "#101d2b", "surface-variant": "#e3e2df", "surface-dark": "#0B131C", "primary-fixed": "#d6e4f7", "line-gold": "rgba(200, 169, 119, 0.25)", "error": "#ba1a1a", "tertiary-fixed": "#ffdeaa", "line-teal": "rgba(0, 127, 130, 0.20)", "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "surface-dark-elevated": "#142232", "on-error-container": "#93000a", "secondary": "#00696c", "on-tertiary-fixed": "#271900", "secondary-container": "#91eff2" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-lg": "1.75rem", "gutter-mobile": "1rem", "space-md": "1rem", "margin": "4rem", "margin-mobile": "1.25rem", "space-3xl": "8rem", "gutter": "1.5rem", "space-xs": "0.25rem", "space-xl": "3rem", "space-sm": "0.5rem", "space-2xl": "5rem" }, "fontFamily": { "body-md": [ "Inter" ], "display-xl-mobile": [ "Space Grotesk" ], "editorial-quote": [ "EB Garamond" ], "label-caps": [ "Space Grotesk" ], "headline-lg-mobile": [ "Space Grotesk" ], "body-lg": [ "Inter" ], "display-xl": [ "Space Grotesk" ], "headline-md": [ "Space Grotesk" ], "body-sm": [ "Inter" ], "headline-lg": [ "Space Grotesk" ], "code-metric": [ "Space Grotesk" ] }, "fontSize": { "body-md": [ "15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" } ], "display-xl-mobile": [ "38px", { "lineHeight": "46px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "editorial-quote": [ "22px", { "lineHeight": "34px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-caps": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.12em", "fontWeight": "700" } ], "headline-lg-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "body-lg": [ "18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "display-xl": [ "64px", { "lineHeight": "72px", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-sm": [ "13px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-lg": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "code-metric": [ "14px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "600" } ] } } } }</script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+
+<!-- Scroll progress bar -->
+<div class="fixed top-0 left-0 h-0.5 bg-gradient-to-r from-secondary via-arctic-blue to-secondary-fixed z-[60] w-0" id="scroll-progress"></div>
+
+<header class="fixed top-0 left-0 w-full z-50 bg-primary-container/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.06)]">
+  <div class="h-16 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-6">
+    <div class="flex items-center gap-8">
+      <a class="flex items-center gap-3 group" data-path="conversation" href="#conversation">
+        <span class="w-2 h-2 rounded-full bg-arctic-blue group-hover:bg-secondary-container transition-colors"></span>
+        <span class="font-label-caps text-label-caps uppercase tracking-widest text-on-primary">NANOQ VENTURES</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-1 lg:gap-2" id="desktop-nav">
+        <a class="nav-link font-label-caps text-label-caps uppercase px-2.5 py-1 rounded transition-colors" data-path="conversation" href="#conversation">Conversation</a>
+        <a class="nav-link font-label-caps text-label-caps uppercase px-2.5 py-1 rounded transition-colors" data-path="built" href="#built">Built</a>
+        <a class="nav-link font-label-caps text-label-caps uppercase px-2.5 py-1 rounded transition-colors" data-path="now" href="#now">Now</a>
+        <a class="nav-link font-label-caps text-label-caps uppercase px-2.5 py-1 rounded transition-colors" data-path="approach" href="#approach">Approach</a>
+        <a class="nav-link font-label-caps text-label-caps uppercase px-2.5 py-1 rounded transition-colors" data-path="governance" href="#governance">Governance</a>
+        <a class="nav-link font-label-caps text-label-caps uppercase px-2.5 py-1 rounded transition-colors" data-path="contact" href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-3 lg:gap-6">
+      <a class="hidden sm:inline-flex items-center gap-2 font-label-caps text-label-caps uppercase tracking-wider text-on-primary bg-surface-dark-elevated hover:bg-secondary hover:text-on-secondary px-3.5 py-1.5 rounded transition-colors" href="mailto:poyan.rajamand@nanoqventures.com"><span class="w-1.5 h-1.5 rounded-full bg-arctic-blue"></span>Write to me</a>
+      <button aria-label="Open the conversation" class="rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-arctic-blue" onclick="scrollToChat()" type="button">
+        <img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-text-muted-dark/30 hover:ring-arctic-blue transition" src="https://lh3.googleusercontent.com/aida/AEtjO1X_jLpcmIy-5VlgFHvuP-j78KFE6UMm9oenhqvK4sKXrNuzB-ZmA2Z3jqbQ5vLEkmUG8YLJ3oxo7Fme1bTbZvP8eq4KGcIGQe7ZI2U0qO3uZmSN1AXJEl31GBE0uMs2nvBdmXTjwjSZ_cvDn7UmJwCbt4fA8MY0-KOEfZxb2ir5DwMCyOlLXOUOqBmR3DmqOJIsecIcEpIk-oz2NOZ_NmzAu_gc5cLZl953Jz5sRPA">
+      </button>
+      <button aria-controls="mobile-nav" aria-expanded="false" aria-label="Menu" class="md:hidden w-9 h-9 flex items-center justify-center rounded bg-surface-dark-elevated text-on-primary" id="mobile-nav-toggle" type="button">
+        <span class="material-symbols-outlined text-xl" id="mobile-nav-icon">menu</span>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile nav -->
+  <nav class="md:hidden hidden border-t border-line-teal/30 bg-primary-container/95 backdrop-blur-md" id="mobile-nav">
+    <div class="px-6 py-3 flex flex-col">
+      <a class="nav-link font-label-caps text-label-caps uppercase px-2.5 py-2.5 rounded transition-colors" data-path="conversation" href="#conversation">Conversation</a>
+      <a class="nav-link font-label-caps text-label-caps uppercase px-2.5 py-2.5 rounded transition-colors" data-path="built" href="#built">Built</a>
+      <a class="nav-link font-label-caps text-label-caps uppercase px-2.5 py-2.5 rounded transition-colors" data-path="now" href="#now">Now</a>
+      <a class="nav-link font-label-caps text-label-caps uppercase px-2.5 py-2.5 rounded transition-colors" data-path="approach" href="#approach">Approach</a>
+      <a class="nav-link font-label-caps text-label-caps uppercase px-2.5 py-2.5 rounded transition-colors" data-path="governance" href="#governance">Governance</a>
+      <a class="nav-link font-label-caps text-label-caps uppercase px-2.5 py-2.5 rounded transition-colors" data-path="contact" href="#contact">Contact</a>
+      <a class="mt-2 inline-flex items-center gap-2 font-label-caps text-label-caps uppercase tracking-wider text-on-primary bg-surface-dark-elevated hover:bg-secondary px-3.5 py-2.5 rounded transition-colors" href="mailto:poyan.rajamand@nanoqventures.com"><span class="w-1.5 h-1.5 rounded-full bg-arctic-blue"></span>Write to me</a>
+    </div>
+  </nav>
+</header>
+
+<main class="w-full pt-16 bg-surface min-h-[calc(100vh-14rem)]">
+<div class="flex flex-col w-full text-on-surface bg-surface font-body-md antialiased selection:bg-secondary selection:text-on-secondary">
+
+<!-- SECTION 1: CONVERSATION (HERO) -->
+<div class="relative w-full overflow-hidden bg-surface-dark text-on-primary border-b border-line-dark" data-nav="conversation" data-section="" id="conversation">
+  <div class="absolute inset-0 opacity-40 pointer-events-none">
+    <div class="absolute -top-32 left-1/4 w-96 h-96 rounded-full bg-secondary blur-3xl opacity-20"></div>
+    <div class="absolute top-1/2 -right-24 w-80 h-80 rounded-full bg-arctic-blue blur-3xl opacity-15"></div>
+    <div class="absolute bottom-0 left-1/3 w-64 h-64 rounded-full bg-tertiary-fixed-dim blur-3xl opacity-10"></div>
+  </div>
+  <div class="absolute inset-0 pointer-events-none" id="hero-glow"></div>
+  <canvas aria-hidden="true" class="absolute inset-0 w-full h-full pointer-events-none opacity-60" id="starfield"></canvas>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-24 space-y-16">
+    <div class="max-w-4xl mx-auto flex flex-col items-center text-center space-y-10">
+      <div class="space-y-6 pt-2 flex flex-col items-center">
+        <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded bg-surface-dark-elevated border border-line-teal"><span class="w-2 h-2 rounded-full bg-[#00FF87] animate-pulse"></span><span class="font-label-caps text-label-caps uppercase tracking-widest text-secondary-fixed">Strategic Advisory &amp; AI Operations</span></div>
+        <h1 class="font-display-xl text-headline-lg lg:text-display-xl tracking-tight text-on-primary max-w-3xl">The Future Starts With a Conversation.</h1>
+        <p class="font-body-md text-body-md text-text-muted-dark/80 leading-relaxed max-w-2xl px-4">Building businesses. Applying AI. Measuring what works.</p>
+      </div>
+
+      <div class="w-full max-w-3xl mx-auto">
+        <div class="rounded-xl bg-surface-dark-elevated/85 border border-line-teal/40 backdrop-blur-md shadow-2xl p-5 lg:p-7 relative overflow-hidden text-left transition-shadow duration-500" id="ai-conversation-hub">
+          <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-arctic-blue/40 to-transparent"></div>
+          <div class="flex items-center justify-between pb-5 border-b border-line-teal/20 gap-4">
+            <div class="flex items-center gap-3.5">
+              <div class="relative">
+                <img alt="Poyan Rajamand" class="w-12 h-12 rounded-full object-cover ring-2 ring-arctic-blue/50" src="https://lh3.googleusercontent.com/aida/AEtjO1X_jLpcmIy-5VlgFHvuP-j78KFE6UMm9oenhqvK4sKXrNuzB-ZmA2Z3jqbQ5vLEkmUG8YLJ3oxo7Fme1bTbZvP8eq4KGcIGQe7ZI2U0qO3uZmSN1AXJEl31GBE0uMs2nvBdmXTjwjSZ_cvDn7UmJwCbt4fA8MY0-KOEfZxb2ir5DwMCyOlLXOUOqBmR3DmqOJIsecIcEpIk-oz2NOZ_NmzAu_gc5cLZl953Jz5sRPA">
+                <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#00FF87] ring-2 ring-surface-dark"></span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2"><span class="font-headline-md text-code-metric lg:text-headline-md text-on-primary font-semibold">Poyan Rajamand</span></div>
+                <div class="flex items-center gap-2 text-xs text-text-muted-dark mt-0.5"><span class="inline-block w-1.5 h-1.5 rounded-full bg-[#00FF87] animate-pulse"></span><span class="text-[#00FF87] font-medium">Online</span><span class="text-text-muted-dark/40">•</span></div>
+                <div class="flex items-center gap-1.5 mt-1"><span class="font-code-metric text-[11px] text-text-muted-dark/80 bg-surface-dark px-2 py-0.5 rounded border border-line-teal/30">Trained on Energy · AI · Entrepreneurship</span></div>
+              </div>
+            </div>
+            <button aria-label="Clear conversation" class="shrink-0 w-8 h-8 rounded flex items-center justify-center text-text-muted-dark hover:text-on-primary hover:bg-surface-dark border border-transparent hover:border-line-teal transition-colors" onclick="resetChat()" title="Clear conversation" type="button">
+              <span class="material-symbols-outlined text-base">restart_alt</span>
+            </button>
+          </div>
+
+          <div aria-live="polite" class="py-5 space-y-4 max-h-[290px] overflow-y-auto pr-1 text-sm scroll-smooth" id="chat-messages">
+            <div class="flex items-start gap-3"><div class="w-7 h-7 rounded-full bg-secondary/30 flex items-center justify-center shrink-0 border border-line-teal mt-0.5"><span class="material-symbols-outlined text-sm text-secondary-fixed">neurology</span></div><div class="p-3.5 rounded-lg bg-surface-dark/90 border border-line-teal/30 text-inverse-on-surface leading-relaxed max-w-[92%] shadow-sm">Hello. I can answer questions about the ventures built, the industrial chiller case study, or how agentic AI is tested against plant telemetry. What would you like to explore?</div></div>
+          </div>
+
+          <div class="space-y-2 pt-2 pb-4">
+            <span class="font-label-caps text-[10px] uppercase tracking-wider text-text-muted-dark block text-left">Verified Topics</span>
+            <div class="flex flex-wrap gap-2">
+              <button class="chat-chip text-left text-xs px-3 py-1.5 rounded bg-surface-dark border border-line-teal hover:border-arctic-blue hover:text-on-primary text-text-muted-dark transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed" onclick="handleChipClick(this)" type="button">How was energy optimisation verified in the chiller plants?</button>
+              <button class="chat-chip text-left text-xs px-3 py-1.5 rounded bg-surface-dark border border-line-teal hover:border-arctic-blue hover:text-on-primary text-text-muted-dark transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed" onclick="handleChipClick(this)" type="button">What was built at BBP and Qatalyst Carbon?</button>
+              <button class="chat-chip text-left text-xs px-3 py-1.5 rounded bg-surface-dark border border-line-teal hover:border-arctic-blue hover:text-on-primary text-text-muted-dark transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed" onclick="handleChipClick(this)" type="button">How does the five-stage hardware control gate work?</button>
+              <button class="chat-chip text-left text-xs px-3 py-1.5 rounded bg-surface-dark border border-line-teal hover:border-arctic-blue hover:text-on-primary text-text-muted-dark transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed" onclick="handleChipClick(this)" type="button">How do you work with companies?</button>
+            </div>
+          </div>
+
+          <form class="relative mt-2" id="chat-form" onsubmit="handleChatSubmit(event)">
+            <div class="flex items-center rounded-lg bg-surface-dark border border-line-teal focus-within:border-arctic-blue transition-colors overflow-hidden">
+              <input autocomplete="off" class="w-full bg-transparent px-4 py-3 text-xs sm:text-sm text-on-primary placeholder:text-text-muted-dark/50 focus:outline-none" id="chat-input" maxlength="280" placeholder="Ask about published ventures, chiller telemetry, or methodology..." type="text">
+              <button aria-label="Send query" class="px-4 py-3 bg-secondary hover:bg-secondary/80 text-on-secondary flex items-center justify-center transition-colors shrink-0 disabled:opacity-50 disabled:cursor-not-allowed" id="chat-send" type="submit"><span class="material-symbols-outlined text-base">send</span></button>
+            </div>
+          </form>
+          <div class="mt-2.5 flex items-center justify-between text-[11px] text-text-muted-dark/70 font-code-metric"><span class="text-arctic-blue font-label-caps uppercase tracking-wider text-[10px]">Zero Hallucination Sandbox</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: WHAT I'VE BUILT -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 py-20 w-full" data-nav="built" data-section="" id="built">
+  <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-line-dark gap-4 reveal">
+    <div>
+      <span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest block mb-1">Track Record</span>
+      <h2 class="font-headline-lg text-headline-lg text-on-surface">Built for Real-World Impact</h2>
+    </div>
+    <p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">Proven commercialization models anchored in measurement-first discipline and global scaling.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Card 1: BBP -->
+    <div class="tilt-card reveal group relative rounded-xl bg-surface-container-lowest p-8 border border-line-dark hover:border-secondary hover:shadow-lg transition-all duration-200 flex flex-col justify-between shadow-sm">
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="font-label-caps text-[11px] uppercase tracking-wider px-2.5 py-1 rounded bg-surface-container text-on-surface font-semibold border border-line-dark">Co-Founded 2012</span>
+          <span class="font-code-metric text-xs text-text-muted-light font-semibold">Asia Operations</span>
+        </div>
+        <h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-secondary transition-colors">BBP</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Co-founded in 2012 to cut energy use in industrial and commercial cooling. Clients paid from savings that were measured and verified. Grew across Asia.</p>
+      </div>
+      <div class="pt-8 mt-6 border-t border-line-dark/60 flex items-center justify-between gap-4">
+        <button class="inline-flex items-center gap-1.5 font-label-caps text-label-caps uppercase tracking-wider text-secondary hover:text-on-surface transition-colors" onclick="triggerPrompt('What was built at BBP and how did verified savings work?')" type="button">ASK Poyan about BBP <span class="text-sm transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span></button>
+        <span class="font-label-caps text-[11px] text-text-muted-light uppercase text-right">Verified Savings Model</span>
+      </div>
+    </div>
+    <!-- Card 2: Qatalyst Carbon -->
+    <div class="tilt-card reveal group relative rounded-xl bg-surface-container-lowest p-8 border border-line-dark hover:border-secondary hover:shadow-lg transition-all duration-200 flex flex-col justify-between shadow-sm" style="transition-delay:80ms">
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="font-label-caps text-[11px] uppercase tracking-wider px-2.5 py-1 rounded bg-secondary-fixed/50 text-on-secondary-fixed font-semibold border border-line-teal">Active Venture</span>
+          <span class="font-code-metric text-xs text-text-muted-light font-semibold">Global Scale</span>
+        </div>
+        <h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-secondary transition-colors">Qatalyst Carbon</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Co-founded. An AI-powered platform for carbon project due diligence, taken from concept to product to funding. Now scaling globally with its team.</p>
+      </div>
+      <div class="pt-8 mt-6 border-t border-line-dark/60 flex items-center justify-between gap-4">
+        <button class="inline-flex items-center gap-1.5 font-label-caps text-label-caps uppercase tracking-wider text-secondary hover:text-on-surface transition-colors text-left" onclick="triggerPrompt('Tell me about Qatalyst Carbon and its due diligence platform.')" type="button">Ask POYAN about Qatalyst Carbon <span class="text-sm transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span></button>
+        <span class="font-label-caps text-[11px] text-text-muted-light uppercase text-right">Due Diligence Platform</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: WHAT I'M BUILDING NOW -->
+<section class="w-full bg-surface-dark text-on-primary py-20 relative overflow-hidden border-y border-line-teal/30" data-nav="now" data-section="" id="now">
+  <div class="absolute inset-0 pointer-events-none opacity-20"><div class="absolute top-1/3 left-10 w-96 h-96 rounded-full bg-secondary blur-3xl"></div><div class="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-arctic-blue blur-3xl"></div></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 space-y-12">
+    <div class="flex flex-col md:flex-row md:items-end justify-between pb-6 border-b border-line-teal/30 gap-4 reveal">
+      <div><span class="font-label-caps text-label-caps uppercase text-arctic-blue tracking-widest block mb-1">What I'm Building</span><h2 class="font-headline-lg text-headline-lg text-on-primary">AI in the Real World</h2></div>
+      <p class="font-body-sm text-body-sm text-text-muted-dark max-w-md">Empirical deployments and rigorous control verification for physical, mission-critical infrastructure.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+      <!-- CARD 01: Singapore Chiller Telemetry -->
+      <div class="reveal group rounded-xl bg-surface-dark-elevated/90 border border-line-teal/40 hover:border-arctic-blue p-7 lg:p-9 flex flex-col justify-between shadow-2xl transition-all duration-200 relative overflow-hidden">
+        <div class="space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-2"><span class="font-code-metric text-[11px] uppercase tracking-wider px-2.5 py-1 rounded bg-surface-dark border border-line-teal text-arctic-blue">DOC-2024-09 // EMPIRICAL CASE // CHILLER TELEMETRY</span><span class="font-code-metric text-xs text-secondary-fixed font-semibold">Singapore Pilot</span></div>
+          <div><h3 class="font-headline-md text-headline-md text-on-primary font-semibold group-hover:text-arctic-blue transition-colors">Energy optimisation in the agentic world</h3><p class="font-body-sm text-body-sm text-text-muted-dark mt-1">Multi-agent telemetry audit vs operator reality</p></div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
+            <div class="p-3 rounded bg-surface-dark/90 border border-line-teal/30 hover:border-arctic-blue/60 hover:-translate-y-0.5 transition-all"><span class="block text-[10px] font-label-caps uppercase text-text-muted-dark">Agents</span><span class="font-code-metric text-sm text-on-primary font-bold block mt-0.5"><span class="count-up" data-target="9">9</span> AI Agents</span><span class="text-[10px] text-text-muted-dark/70 font-code-metric block">Orchestrated</span></div>
+            <div class="p-3 rounded bg-surface-dark/90 border border-line-teal/30 hover:border-arctic-blue/60 hover:-translate-y-0.5 transition-all"><span class="block text-[10px] font-label-caps uppercase text-text-muted-dark">Scope</span><span class="font-code-metric text-sm text-on-primary font-bold block mt-0.5"><span class="count-up" data-target="3">3</span> Plants</span><span class="text-[10px] text-text-muted-dark/70 font-code-metric block">SG Telemetry</span></div>
+            <div class="p-3 rounded bg-surface-dark/90 border border-line-teal/30 hover:border-arctic-blue/60 hover:-translate-y-0.5 transition-all"><span class="block text-[10px] font-label-caps uppercase text-text-muted-dark">Speed</span><span class="font-code-metric text-sm text-on-primary font-bold block mt-0.5"><span class="count-up" data-target="80">80</span> Min</span><span class="text-[10px] text-text-muted-dark/70 font-code-metric block">Audit Cycle</span></div>
+            <div class="p-3 rounded bg-surface-dark/90 border border-line-teal/30 hover:border-arctic-blue/60 hover:-translate-y-0.5 transition-all"><span class="block text-[10px] font-label-caps uppercase text-text-muted-dark">Controls Delta</span><span class="font-code-metric text-sm text-secondary-fixed font-bold block mt-0.5">~<span class="count-up" data-target="460">460</span> MWh/yr</span><span class="text-[10px] text-[#00FF87] font-code-metric block">No Capex</span></div>
+          </div>
+          <p class="font-body-md text-body-md text-text-muted-dark leading-relaxed">Nine AI agents went through data from three Singapore chiller plants in 80 minutes, with a second vendor's model checking the work. Base case: about 460 MWh a year in controls savings with no new hardware, 1 to 7% of each plant's energy. The largest lever, a plant over-pumped by 25 to 30%, only surfaced once an operator's playbook went into the brief. Part is proven from plant records; short trials would settle the rest. The five first-pass claims the agents got wrong are in the report too.</p>
+          <div class="p-3.5 rounded-lg bg-surface-dark/80 border border-line-teal/30 space-y-1.5 font-code-metric text-xs">
+            <div class="flex items-center justify-between gap-2 text-tertiary-fixed-dim font-semibold text-[11px] uppercase tracking-wider"><span>Telemetry Baseline vs Extrapolated</span><span class="text-arctic-blue text-[10px]">Verified Plant Records</span></div>
+            <div class="text-text-muted-dark/90">• Over-pumping delta: 25% to 30% above hydraulic requirement</div>
+            <div class="text-text-muted-dark/90">• 5 false-positive agent inferences eliminated during dual check</div>
+          </div>
+        </div>
+        <div class="pt-6 mt-6 border-t border-line-teal/30 flex flex-wrap items-center justify-between gap-4">
+          <a class="inline-flex items-center gap-2 font-label-caps text-label-caps uppercase tracking-wider text-secondary-fixed hover:text-on-primary transition-colors" href="chiller-story.html" rel="noopener" target="_blank">Read the report <span class="text-sm">↗</span></a>
+          <button class="font-label-caps text-xs text-text-muted-dark hover:text-arctic-blue transition-colors flex items-center gap-1 font-code-metric" onclick="triggerPrompt('Explain the 9 AI agents chiller plant telemetry findings.')" type="button"><span class="material-symbols-outlined text-sm text-arctic-blue">chat</span>Ask AI about this case</button>
+        </div>
+      </div>
+
+      <!-- CARD 02: Merged is Not Deployed (5-Stage Hardware Gate) -->
+      <div class="reveal group rounded-xl bg-surface-dark-elevated/90 border border-line-teal/40 hover:border-arctic-blue p-7 lg:p-9 flex flex-col justify-between shadow-2xl transition-all duration-200 relative overflow-hidden" style="transition-delay:80ms">
+        <div class="space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-2"><span class="font-code-metric text-[11px] uppercase tracking-wider px-2.5 py-1 rounded bg-surface-dark border border-line-gold text-tertiary-fixed-dim">PROTOCOL-V4 // HARDWARE CONTROL GATE &amp; SAFETY</span><span class="font-code-metric text-xs text-arctic-blue font-semibold">Governance Protocol</span></div>
+          <div><h3 class="font-headline-md text-headline-md text-on-primary font-semibold group-hover:text-arctic-blue transition-colors">Merged is not deployed</h3><p class="font-body-sm text-body-sm text-text-muted-dark mt-1">How a proposed change moves through review and human approval before reaching real hardware. In safety-critical infrastructure, code merging is strictly decoupled from physical actuation.</p></div>
+
+          <!-- Interactive 5-Stage Scrubber Timeline Widget -->
+          <div class="p-4 rounded-xl bg-surface-dark/90 border border-line-teal/40 space-y-3.5" id="gate-widget">
+            <div class="flex items-center justify-between gap-2">
+              <span class="font-label-caps text-[11px] uppercase tracking-wider text-arctic-blue font-bold">5-Stage Hardware Control Gate</span>
+              <div class="flex items-center gap-2">
+                <button aria-label="Play through stages" class="w-6 h-6 rounded flex items-center justify-center text-text-muted-dark hover:text-on-primary border border-line-teal/40 hover:border-arctic-blue transition-colors" id="gate-play" onclick="toggleGatePlay()" type="button"><span class="material-symbols-outlined text-sm" id="gate-play-icon">play_arrow</span></button>
+                <span class="font-code-metric text-xs text-tertiary-fixed-dim" id="gate-step-badge">Stage 3 of 5</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-5 gap-1.5" id="scrubber-buttons">
+              <button class="gate-btn py-1.5 px-1 rounded text-center border font-code-metric text-[10px] uppercase font-bold transition-all" onclick="setGateStep(1, true)" type="button">01 Hyp</button>
+              <button class="gate-btn py-1.5 px-1 rounded text-center border font-code-metric text-[10px] uppercase font-bold transition-all" onclick="setGateStep(2, true)" type="button">02 Sim</button>
+              <button class="gate-btn py-1.5 px-1 rounded text-center border font-code-metric text-[10px] uppercase font-bold transition-all" onclick="setGateStep(3, true)" type="button">03 Dual</button>
+              <button class="gate-btn py-1.5 px-1 rounded text-center border font-code-metric text-[10px] uppercase font-bold transition-all" onclick="setGateStep(4, true)" type="button">04 Gate</button>
+              <button class="gate-btn py-1.5 px-1 rounded text-center border font-code-metric text-[10px] uppercase font-bold transition-all" onclick="setGateStep(5, true)" type="button">05 Trial</button>
+            </div>
+            <div class="pt-1">
+              <input aria-label="Gate stage" class="w-full accent-[#00696c] cursor-pointer h-1.5 rounded-lg appearance-none" id="gate-range-slider" max="5" min="1" oninput="setGateStep(parseInt(this.value), true)" step="1" type="range" value="3">
+            </div>
+            <div class="p-3.5 rounded bg-surface-dark-elevated/70 border border-line-teal/30 space-y-1 font-code-metric transition-all min-h-[72px]" id="gate-step-detail">
+              <div class="flex items-center justify-between gap-2 text-xs"><span class="text-on-primary font-bold" id="gate-title">Step 03: Dual Model Check</span><span class="text-[10px] uppercase text-[#00FF87] text-right" id="gate-status">Adversarial Vendor Audit</span></div>
+              <p class="text-xs text-text-muted-dark leading-relaxed" id="gate-desc">A second distinct foundation model assesses the generated control script for anomalous loop oscillation, physical envelope violations, and false assumptions.</p>
+            </div>
+          </div>
+          <p class="font-body-sm text-body-sm text-text-muted-dark/80 leading-relaxed">The protocol guarantees zero autonomous writes directly to supervisory SCADA or PLC controllers without passing formal simulation, vendor consensus, and manual engineer sign-off.</p>
+        </div>
+        <div class="pt-6 mt-6 border-t border-line-teal/30 flex flex-wrap items-center justify-between gap-4">
+          <a class="inline-flex items-center gap-2 font-label-caps text-label-caps uppercase tracking-wider text-secondary-fixed hover:text-on-primary transition-colors" href="merged-is-not-deployed_public-draft.html" rel="noopener" target="_blank">See how a change reaches hardware <span class="text-sm">↗</span></a>
+          <button class="font-label-caps text-xs text-text-muted-dark hover:text-arctic-blue transition-colors flex items-center gap-1 font-code-metric" onclick="triggerPrompt('How does the five-stage hardware control gate work?')" type="button"><span class="material-symbols-outlined text-sm text-arctic-blue">chat</span>Ask AI about this gate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: WORKING WITH COMPANIES -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 py-20 w-full" data-nav="approach" data-section="" id="companies">
+  <div class="reveal rounded-xl bg-surface-container-low border border-line-dark p-8 lg:p-14 relative overflow-hidden shadow-sm">
+    <div class="max-w-4xl space-y-6">
+      <span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest block">Mandate &amp; Engagement</span>
+      <h2 class="font-headline-lg text-headline-lg text-on-surface">Working with companies</h2>
+      <blockquote class="font-editorial-quote text-editorial-quote text-on-surface leading-relaxed italic border-l-2 border-secondary pl-6">“Through Nanoq Ventures I work with companies that want agentic AI to earn its keep: a new line of business, or an operation that should cost less. I start from their data and customers, and measure the result before I call it one.”</blockquote>
+      <div class="pt-4 flex flex-wrap items-center gap-6">
+        <a class="inline-flex items-center gap-2 px-5 py-2.5 rounded bg-primary-container hover:bg-secondary text-on-primary font-label-caps text-label-caps uppercase tracking-wider transition-colors" href="mailto:poyan.rajamand@nanoqventures.com">Initiate Advisory Inquiry ↗</a>
+        <span class="text-xs text-on-surface-variant font-code-metric">Active corporate advisory mandates in Zurich &amp; Oslo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: HOW I WORK -->
+<section class="w-full bg-surface-container-low border-y border-line-dark py-20" data-nav="approach" data-section="" id="approach">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 space-y-14">
+    <div class="flex flex-col md:flex-row md:items-end justify-between pb-4 border-b border-line-dark gap-4 reveal">
+      <div>
+        <span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest block mb-1">Methodology</span>
+        <h2 class="font-headline-lg text-headline-lg text-on-surface">Intelligence, With Accountability</h2>
+      </div>
+      <a class="inline-flex items-center gap-1.5 font-label-caps text-label-caps uppercase tracking-wider text-secondary hover:text-on-surface transition-colors" href="merged-is-not-deployed_public-draft.html">See how a change reaches hardware ↗</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="reveal p-8 rounded-xl bg-surface-container-lowest border border-line-dark space-y-3 shadow-sm hover:border-secondary hover:-translate-y-1 hover:shadow-md transition-all">
+        <div class="flex items-center justify-between text-xs font-code-metric text-text-muted-light"><span class="font-label-caps uppercase tracking-wider text-secondary">Principle 01</span><span>01 / 03</span></div>
+        <h3 class="font-headline-md text-headline-md text-on-surface">Measure first.</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">The first AI answer is a hypothesis.</p>
+      </div>
+      <div class="reveal p-8 rounded-xl bg-surface-container-lowest border border-line-dark space-y-3 shadow-sm hover:border-secondary hover:-translate-y-1 hover:shadow-md transition-all" style="transition-delay:80ms">
+        <div class="flex items-center justify-between text-xs font-code-metric text-text-muted-light"><span class="font-label-caps uppercase tracking-wider text-secondary">Principle 02</span><span>02 / 03</span></div>
+        <h3 class="font-headline-md text-headline-md text-on-surface">Second model, second vendor.</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">A different vendor's model reviews major work before I act on it.</p>
+      </div>
+      <div class="reveal p-8 rounded-xl bg-surface-container-lowest border border-line-dark space-y-3 shadow-sm hover:border-secondary hover:-translate-y-1 hover:shadow-md transition-all" style="transition-delay:160ms">
+        <div class="flex items-center justify-between text-xs font-code-metric text-text-muted-light"><span class="font-label-caps uppercase tracking-wider text-secondary">Principle 03</span><span>03 / 03</span></div>
+        <h3 class="font-headline-md text-headline-md text-on-surface">Humans decide.</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant">Nothing goes out and no money is spent without a person's approval.</p>
+      </div>
+    </div>
+
+    <div class="reveal p-6 rounded-lg bg-surface border border-line-dark flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-secondary">verified</span>
+        <p class="font-body-md text-body-md text-on-surface font-medium">I test these rules first on a live energy system I run myself.</p>
+      </div>
+      <span class="font-label-caps text-xs uppercase tracking-wider text-text-muted-light">In-House Grounding</span>
+    </div>
+
+    <!-- Five-Stage Hardware Control Gate Timeline (synced with the widget above) -->
+    <div class="space-y-6 pt-4 reveal">
+      <div class="flex items-center justify-between">
+        <h4 class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">Five-Stage Hardware Control Gate</h4>
+        <span class="text-xs font-code-metric text-text-muted-light">Sequential Protocol</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-5 gap-3" id="gate-timeline">
+        <button class="timeline-step p-4 rounded bg-surface-container-lowest border space-y-1 text-center transition-all" onclick="setGateStep(1, true)" type="button"><div class="text-[11px] font-label-caps text-text-muted-light uppercase">Step 01</div><div class="font-code-metric text-sm font-semibold text-on-surface">Hypothesis</div></button>
+        <button class="timeline-step p-4 rounded bg-surface-container-lowest border space-y-1 text-center transition-all" onclick="setGateStep(2, true)" type="button"><div class="text-[11px] font-label-caps text-text-muted-light uppercase">Step 02</div><div class="font-code-metric text-sm font-semibold text-on-surface">Simulation</div></button>
+        <button class="timeline-step p-4 rounded bg-surface-container-lowest border space-y-1 text-center transition-all" onclick="setGateStep(3, true)" type="button"><div class="text-[11px] font-label-caps text-text-muted-light uppercase">Step 03</div><div class="font-code-metric text-sm font-semibold text-on-surface">Dual Model Check</div></button>
+        <button class="timeline-step p-4 rounded bg-surface-container-lowest border space-y-1 text-center transition-all" onclick="setGateStep(4, true)" type="button"><div class="text-[11px] font-label-caps text-text-muted-light uppercase">Step 04</div><div class="font-code-metric text-sm font-semibold text-on-surface">Human Gate</div></button>
+        <button class="timeline-step p-4 rounded bg-surface-container-lowest border space-y-1 text-center transition-all" onclick="setGateStep(5, true)" type="button"><div class="text-[11px] font-label-caps text-text-muted-light uppercase">Step 05</div><div class="font-code-metric text-sm font-semibold text-secondary">Hardware Trial</div></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: WHERE I SIT -->
+<section class="max-w-7xl mx-auto px-6 lg:px-12 py-20 w-full" data-nav="governance" data-section="" id="governance">
+  <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-line-dark gap-4 reveal">
+    <div>
+      <span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest block mb-1">Governance &amp; Oversight</span>
+      <h2 class="font-headline-lg text-headline-lg text-on-surface">Where I sit</h2>
+    </div>
+    <span class="font-code-metric text-xs text-text-muted-light">Board Mandates</span>
+  </div>
+  <div class="reveal p-8 lg:p-10 rounded-xl bg-surface-container-lowest border border-line-dark shadow-sm">
+    <p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Supervisory Board, World Benchmarking Alliance (Strategy, and Finance &amp; Operations Committees). Board member, Airwatergreen AB. Previously board member, SenseNode AB (2024 to 2025). Nanoq Ventures is my company.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 mt-8 border-t border-line-dark">
+      <div class="space-y-1 p-3 -m-3 rounded-lg hover:bg-surface-container-low transition-colors">
+        <span class="font-label-caps text-[11px] uppercase tracking-wider text-text-muted-light block">Global Benchmark</span>
+        <div class="font-headline-md text-body-md font-semibold text-on-surface">World Benchmarking Alliance</div>
+        <div class="text-xs text-on-surface-variant font-body-sm">Supervisory Board (Strategy, Finance &amp; Ops)</div>
+      </div>
+      <div class="space-y-1 p-3 -m-3 rounded-lg hover:bg-surface-container-low transition-colors">
+        <span class="font-label-caps text-[11px] uppercase tracking-wider text-text-muted-light block">Industrial Desiccant Tech</span>
+        <div class="font-headline-md text-body-md font-semibold text-on-surface">Airwatergreen AB</div>
+        <div class="text-xs text-on-surface-variant font-body-sm">Board Member</div>
+      </div>
+      <div class="space-y-1 p-3 -m-3 rounded-lg hover:bg-surface-container-low transition-colors">
+        <span class="font-label-caps text-[11px] uppercase tracking-wider text-text-muted-light block">Holding &amp; Advisory</span>
+        <div class="font-headline-md text-body-md font-semibold text-on-surface">Nanoq Ventures</div>
+        <div class="text-xs text-on-surface-variant font-body-sm">Principal &amp; Founder</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: CONTACT -->
+<section class="w-full bg-surface-container border-t border-line-dark py-20" data-nav="contact" data-section="" id="contact">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="max-w-3xl space-y-8 reveal">
+      <div>
+        <span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest block mb-2">Direct Channel</span>
+        <h2 class="font-headline-lg text-headline-lg text-on-surface">A Conversation Worth Having</h2>
+      </div>
+      <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Want agentic AI measured rather than demoed, or weighing a new line of business? Write to me.</p>
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+        <a class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded bg-primary-container hover:bg-secondary text-on-primary font-label-caps text-label-caps uppercase tracking-wider transition-colors shadow-sm break-all" href="mailto:poyan.rajamand@nanoqventures.com"><span class="material-symbols-outlined text-base">mail</span>poyan.rajamand@nanoqventures.com</a>
+        <button class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded bg-surface-container-lowest hover:bg-surface border border-line-dark text-on-surface font-label-caps text-label-caps uppercase tracking-wider transition-colors" onclick="scrollToChat()" type="button"><span class="material-symbols-outlined text-base text-secondary">forum</span>Continue Conversation with AI</button>
+      </div>
+      <div class="pt-4 text-xs font-code-metric text-text-muted-light flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>Direct executive inbox monitored daily.</div>
+    </div>
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer class="w-full bg-primary-container text-on-primary py-12">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div class="space-y-1.5">
+      <div class="flex flex-wrap items-center gap-2"><span class="font-label-caps text-label-caps uppercase tracking-widest text-on-primary">NANOQ VENTURES</span><span class="text-xs text-text-muted-dark font-code-metric">— STATION OSLO / ZURICH</span></div>
+      <p class="font-body-sm text-body-sm text-text-muted-dark">Venture architecture, frontier technology conviction, and strategic advisory.</p>
+    </div>
+    <div class="flex flex-col sm:flex-row sm:items-center gap-6 lg:gap-10 font-label-caps text-label-caps uppercase tracking-wider"><a class="text-text-muted-dark hover:text-on-primary transition-colors break-all" href="mailto:poyan.rajamand@nanoqventures.com">poyan.rajamand@nanoqventures.com</a><span class="hidden sm:inline text-text-muted-dark/40">•</span><span class="text-text-muted-dark">Active Advisory Mandate</span></div>
+    <div class="font-body-sm text-body-sm text-text-muted-dark/80">© 2025 Nanoq Ventures. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button aria-label="Back to top" class="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-primary-container text-on-primary shadow-lg border border-line-teal/40 flex items-center justify-center opacity-0 pointer-events-none translate-y-3 transition-all duration-300 hover:bg-secondary" id="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" type="button">
+  <span class="material-symbols-outlined">arrow_upward</span>
+</button>
+
+<script>
+  /* ---------------- Chat ---------------- */
+  const knowledgeBase = {
+    "chiller": "In the Singapore chiller plant analysis, nine AI agents evaluated telemetry across three plants in 80 minutes. A dual-vendor check verified findings. The base case indicated ~460 MWh/year in controls savings (1-7% of plant energy) with no new hardware, discovering a 25-30% over-pumping issue through the operator playbook.",
+    "energy": "In the Singapore chiller plant analysis, nine AI agents evaluated telemetry across three plants in 80 minutes. A dual-vendor check verified findings. The base case indicated ~460 MWh/year in controls savings (1-7% of plant energy) with no new hardware, discovering a 25-30% over-pumping issue through the operator playbook.",
+    "bbp": "BBP was co-founded in 2012 to cut energy use in industrial and commercial cooling. Clients paid strictly from savings that were measured and verified. The venture scaled successfully across Asia.",
+    "qatalyst": "Qatalyst Carbon is an active co-founded venture. It provides an AI-powered platform for carbon project due diligence, taken from concept to product to funding, now scaling globally with its dedicated team.",
+    "five-stage": "The five-stage hardware control gate requires: 1. Hypothesis → 2. Simulation → 3. Dual Model Check → 4. Human Gate → 5. Hardware Trial. Nothing reaches hardware without human approval.",
+    "gate": "The five-stage hardware control gate requires: 1. Hypothesis → 2. Simulation → 3. Dual Model Check → 4. Human Gate → 5. Hardware Trial. Nothing reaches hardware without human approval.",
+    "companies": "Through Nanoq Ventures, I work with companies that want agentic AI to earn its keep: a new line of business, or an operation that should cost less. Work begins from existing data and customers, measuring the result before calling it one.",
+    "default": "Through Nanoq Ventures, Poyan Rajamand focuses on agentic AI for industrial operations starting from verified baseline data, drawing from experience building BBP, Qatalyst Carbon, and institutional board governance."
+  };
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const chatContainer = document.getElementById("chat-messages");
+  const initialChatHTML = chatContainer.innerHTML;
+  let chatBusy = false;
+
+  const USER_AVATAR = '<div class="w-7 h-7 rounded-full bg-primary-container flex items-center justify-center shrink-0 border border-line-teal mt-0.5"><span class="material-symbols-outlined text-sm text-arctic-blue">person</span></div>';
+  const AI_AVATAR = '<div class="w-7 h-7 rounded-full bg-secondary/30 flex items-center justify-center shrink-0 border border-line-teal mt-0.5"><span class="material-symbols-outlined text-sm text-secondary-fixed">neurology</span></div>';
+
+  function setChatBusy(busy) {
+    chatBusy = busy;
+    document.getElementById("chat-send").disabled = busy;
+    document.querySelectorAll(".chat-chip").forEach(c => c.disabled = busy);
+  }
+
+  function scrollChatToBottom() {
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }
+
+  function appendMessage(sender, text) {
+    const msgDiv = document.createElement("div");
+    const bubble = document.createElement("div");
+    if (sender === "user") {
+      msgDiv.className = "flex flex-row-reverse items-start gap-3 msg-in";
+      msgDiv.innerHTML = USER_AVATAR;
+      bubble.className = "p-3 rounded-lg bg-surface-dark-elevated text-on-primary leading-relaxed max-w-[85%] border border-line-teal/30 shadow-sm";
+    } else {
+      msgDiv.className = "flex items-start gap-3 msg-in";
+      msgDiv.innerHTML = AI_AVATAR;
+      bubble.className = "p-3.5 rounded-lg bg-surface-dark/95 border border-line-teal/40 text-inverse-on-surface leading-relaxed max-w-[92%] shadow-sm";
+    }
+    bubble.textContent = text; // textContent: user input is never parsed as HTML
+    msgDiv.appendChild(bubble);
+    chatContainer.appendChild(msgDiv);
+    scrollChatToBottom();
+    return bubble;
+  }
+
+  function showTyping() {
+    const el = document.createElement("div");
+    el.className = "flex items-start gap-3 msg-in";
+    el.innerHTML = AI_AVATAR + '<div class="px-3.5 py-3 rounded-lg bg-surface-dark/95 border border-line-teal/40 flex items-center gap-1.5" aria-label="Typing"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>';
+    chatContainer.appendChild(el);
+    scrollChatToBottom();
+    return el;
+  }
+
+  function typeOut(bubble, text, done) {
+    if (reduceMotion) { bubble.textContent = text; scrollChatToBottom(); return done(); }
+    const words = text.split(" ");
+    let i = 0;
+    bubble.textContent = "";
+    (function step() {
+      i = Math.min(words.length, i + 2);
+      bubble.textContent = words.slice(0, i).join(" ");
+      scrollChatToBottom();
+      if (i < words.length) setTimeout(step, 28);
+      else done();
+    })();
+  }
+
+  function resolveResponse(query) {
+    const lower = query.toLowerCase();
+    if (lower.includes("chiller") || lower.includes("energy") || lower.includes("optimisation") || lower.includes("plant") || lower.includes("mwh")) return knowledgeBase.chiller;
+    if (lower.includes("bbp")) return knowledgeBase.bbp;
+    if (lower.includes("qatalyst") || lower.includes("carbon")) return knowledgeBase.qatalyst;
+    if (lower.includes("gate") || lower.includes("hardware") || lower.includes("five-stage") || lower.includes("stage")) return knowledgeBase.gate;
+    if (lower.includes("companies") || lower.includes("work with") || lower.includes("mandate")) return knowledgeBase.companies;
+    return knowledgeBase.default;
+  }
+
+  function processQuery(query) {
+    const response = resolveResponse(query);
+    setChatBusy(true);
+    const typing = showTyping();
+    setTimeout(() => {
+      typing.remove();
+      const bubble = appendMessage("assistant", "");
+      typeOut(bubble, response, () => setChatBusy(false));
+    }, reduceMotion ? 150 : 650);
+  }
+
+  function ask(text) {
+    if (chatBusy || !text) return;
+    appendMessage("user", text);
+    processQuery(text);
+  }
+
+  function handleChatSubmit(e) {
+    e.preventDefault();
+    const input = document.getElementById("chat-input");
+    const val = input.value.trim();
+    if (!val || chatBusy) return;
+    input.value = "";
+    ask(val);
+  }
+
+  function handleChipClick(btn) {
+    ask(btn.innerText.trim());
+  }
+
+  function triggerPrompt(promptText) {
+    scrollToChat();
+    setTimeout(() => ask(promptText), 500);
+  }
+
+  function scrollToChat() {
+    const el = document.getElementById("ai-conversation-hub");
+    if (!el) return;
+    el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+    el.classList.add("ring-2", "ring-arctic-blue/60");
+    setTimeout(() => el.classList.remove("ring-2", "ring-arctic-blue/60"), 1400);
+    const input = document.getElementById("chat-input");
+    if (input) setTimeout(() => input.focus({ preventScroll: true }), 450);
+  }
+
+  function resetChat() {
+    if (chatBusy) return;
+    chatContainer.innerHTML = initialChatHTML;
+  }
+
+  /* ---------------- Hardware control gate ---------------- */
+  const gateSteps = {
+    1: { title: "Step 01: Hypothesis", status: "Agent Proposal", desc: "An AI agent proposes a control change from plant telemetry. The first AI answer is a hypothesis, recorded with its evidence and assumptions before anything else happens." },
+    2: { title: "Step 02: Simulation", status: "Envelope Replay", desc: "The proposed change is replayed against historical plant records and simulated inside the physical operating envelope. Anything that breaks a limit is rejected here." },
+    3: { title: "Step 03: Dual Model Check", status: "Adversarial Vendor Audit", desc: "A second distinct foundation model assesses the generated control script for anomalous loop oscillation, physical envelope violations, and false assumptions." },
+    4: { title: "Step 04: Human Gate", status: "Engineer Sign-off", desc: "A named engineer reviews the evidence from simulation and the dual check, then approves or rejects. Nothing reaches hardware without a person's approval." },
+    5: { title: "Step 05: Hardware Trial", status: "Supervised Actuation", desc: "A short, supervised trial on real equipment, measured against the plant baseline with rollback ready. The result is verified before the change is kept." }
+  };
+  const BTN_ACTIVE = "bg-secondary text-on-secondary border-secondary ring-1 ring-arctic-blue";
+  const BTN_DONE = "bg-secondary/20 text-secondary-fixed border-secondary/50 hover:border-arctic-blue";
+  const BTN_IDLE = "bg-surface-dark-elevated text-text-muted-dark border-line-teal/40 hover:border-arctic-blue";
+  const TL_ACTIVE = "border-secondary ring-2 ring-secondary/30 shadow-md -translate-y-0.5";
+  const TL_DONE = "border-secondary/40";
+  const TL_IDLE = "border-line-dark hover:border-secondary";
+  let currentGateStep = 0;
+  let gateTimer = null;
+
+  function swapClasses(el, remove, add) {
+    el.classList.remove(...remove.split(" "));
+    el.classList.add(...add.split(" "));
+  }
+
+  function setGateStep(step, fromUser) {
+    step = Math.max(1, Math.min(5, step || 1));
+    if (fromUser) stopGatePlay();
+    const data = gateSteps[step];
+    const allBtn = [BTN_ACTIVE, BTN_DONE, BTN_IDLE].join(" ");
+    const allTl = [TL_ACTIVE, TL_DONE, TL_IDLE].join(" ");
+
+    document.querySelectorAll("#scrubber-buttons .gate-btn").forEach((b, i) => {
+      const n = i + 1;
+      swapClasses(b, allBtn, n === step ? BTN_ACTIVE : n < step ? BTN_DONE : BTN_IDLE);
+      b.setAttribute("aria-pressed", n === step);
+    });
+    document.querySelectorAll("#gate-timeline .timeline-step").forEach((b, i) => {
+      const n = i + 1;
+      swapClasses(b, allTl, n === step ? TL_ACTIVE : n < step ? TL_DONE : TL_IDLE);
+      b.setAttribute("aria-pressed", n === step);
+    });
+
+    const slider = document.getElementById("gate-range-slider");
+    slider.value = step;
+    slider.style.setProperty("--fill", ((step - 1) / 4 * 100) + "%");
+    document.getElementById("gate-step-badge").textContent = "Stage " + step + " of 5";
+
+    if (step !== currentGateStep) {
+      document.getElementById("gate-title").textContent = data.title;
+      document.getElementById("gate-status").textContent = data.status;
+      document.getElementById("gate-desc").textContent = data.desc;
+      const detail = document.getElementById("gate-step-detail");
+      detail.classList.remove("swap");
+      void detail.offsetWidth;
+      detail.classList.add("swap");
+    }
+    currentGateStep = step;
+  }
+
+  function toggleGatePlay() {
+    if (gateTimer) return stopGatePlay();
+    document.getElementById("gate-play-icon").textContent = "pause";
+    if (currentGateStep >= 5) setGateStep(1);
+    gateTimer = setInterval(() => {
+      if (currentGateStep >= 5) return stopGatePlay();
+      setGateStep(currentGateStep + 1);
+    }, 1800);
+  }
+
+  function stopGatePlay() {
+    clearInterval(gateTimer);
+    gateTimer = null;
+    document.getElementById("gate-play-icon").textContent = "play_arrow";
+  }
+
+  document.getElementById("gate-widget").addEventListener("keydown", (e) => {
+    if (e.target.id === "gate-range-slider") return; // native slider handles arrows
+    if (e.key === "ArrowRight") { setGateStep(currentGateStep + 1, true); e.preventDefault(); }
+    if (e.key === "ArrowLeft") { setGateStep(currentGateStep - 1, true); e.preventDefault(); }
+  });
+
+  setGateStep(3);
+
+  /* ---------------- Navigation: mobile menu + scrollspy ---------------- */
+  const NAV_ACTIVE = "text-on-primary bg-surface-dark-elevated font-medium";
+  const NAV_IDLE = "text-text-muted-dark hover:text-on-primary";
+  const mobileNav = document.getElementById("mobile-nav");
+  const mobileToggle = document.getElementById("mobile-nav-toggle");
+
+  function setMobileNav(open) {
+    mobileNav.classList.toggle("hidden", !open);
+    mobileToggle.setAttribute("aria-expanded", open);
+    document.getElementById("mobile-nav-icon").textContent = open ? "close" : "menu";
+  }
+  mobileToggle.addEventListener("click", () => setMobileNav(mobileNav.classList.contains("hidden")));
+  mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMobileNav(false)));
+
+  function setActiveNav(path) {
+    document.querySelectorAll(".nav-link").forEach(link => {
+      const active = link.dataset.path === path;
+      swapClasses(link, NAV_ACTIVE + " " + NAV_IDLE, active ? NAV_ACTIVE : NAV_IDLE);
+      if (active) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    });
+  }
+
+  const sections = Array.from(document.querySelectorAll("[data-section]"));
+  const progress = document.getElementById("scroll-progress");
+  const backToTop = document.getElementById("back-to-top");
+  let ticking = false;
+
+  function onScroll() {
+    const y = window.scrollY;
+    const probe = y + window.innerHeight * 0.35;
+    let current = sections[0];
+    for (const s of sections) if (s.offsetTop <= probe) current = s;
+    setActiveNav(current.dataset.nav);
+
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
+
+    const show = y > window.innerHeight * 0.8;
+    backToTop.classList.toggle("opacity-0", !show);
+    backToTop.classList.toggle("pointer-events-none", !show);
+    backToTop.classList.toggle("translate-y-3", !show);
+    ticking = false;
+  }
+  window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
+
+  /* ---------------- Reveal on scroll + count-up ---------------- */
+  function countUp(el) {
+    const target = parseInt(el.dataset.target, 10);
+    if (reduceMotion || !target) { el.textContent = target; return; }
+    const start = performance.now(), dur = 1100;
+    (function frame(now) {
+      const t = Math.min(1, (now - start) / dur);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - t, 3)));
+      if (t < 1) requestAnimationFrame(frame);
+    })(start);
+  }
+
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        entry.target.querySelectorAll(".count-up").forEach(countUp);
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll(".reveal").forEach(el => el.classList.add("is-visible"));
+  }
+
+  /* ---------------- Hero: pointer glow + starfield ---------------- */
+  const hero = document.getElementById("conversation");
+  const glow = document.getElementById("hero-glow");
+  hero.addEventListener("pointermove", (e) => {
+    const r = hero.getBoundingClientRect();
+    glow.style.setProperty("--mx", (e.clientX - r.left) + "px");
+    glow.style.setProperty("--my", (e.clientY - r.top) + "px");
+  });
+
+  (function starfield() {
+    const canvas = document.getElementById("starfield");
+    const ctx = canvas.getContext("2d");
+    let stars = [], w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), running = true;
+
+    function resize() {
+      w = hero.clientWidth; h = hero.clientHeight;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const count = Math.round((w * h) / 9000);
+      stars = Array.from({ length: count }, () => ({
+        x: Math.random() * w, y: Math.random() * h,
+        r: Math.random() * 1.2 + 0.2,
+        vy: Math.random() * 0.12 + 0.02,
+        a: Math.random() * 0.6 + 0.2,
+        tw: Math.random() * Math.PI * 2
+      }));
+      draw(0);
+    }
+
+    function draw(t) {
+      ctx.clearRect(0, 0, w, h);
+      for (const s of stars) {
+        const alpha = s.a * (0.65 + 0.35 * Math.sin(t / 900 + s.tw));
+        ctx.fillStyle = "rgba(186, 214, 220," + alpha + ")";
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+
+    function loop(t) {
+      if (!running) return;
+      for (const s of stars) { s.y -= s.vy; if (s.y < -2) { s.y = h + 2; s.x = Math.random() * w; } }
+      draw(t);
+      requestAnimationFrame(loop);
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
+    if (reduceMotion) return;
+    // Only animate while the hero is on screen
+    new IntersectionObserver(([e]) => {
+      const wasRunning = running;
+      running = e.isIntersecting;
+      if (running && !wasRunning) requestAnimationFrame(loop);
+    }).observe(hero);
+    requestAnimationFrame(loop);
+  })();
+
+  /* ---------------- Subtle card tilt ---------------- */
+  if (!reduceMotion && window.matchMedia("(hover: hover)").matches) {
+    document.querySelectorAll(".tilt-card").forEach(card => {
+      card.addEventListener("pointermove", (e) => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `perspective(900px) rotateX(${(-y * 3).toFixed(2)}deg) rotateY(${(x * 3).toFixed(2)}deg)`;
+      });
+      card.addEventListener("pointerleave", () => { card.style.transform = ""; });
+    });
+  }
+</script>
+</body>
+</html>
